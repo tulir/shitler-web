@@ -14,4 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-connect()
+function connect() {
+  console.log("Connecting to socket...")
+
+  socket = new WebSocket(websocketPath)
+  socket.onopen = onOpen
+  socket.onmessage = onMessage
+  socket.onclose = onClose
+}
+
+function onOpen() {
+  console.log("Successfully connected!")
+}
+
+function onClose() {
+  console.log("Disconnected from server!")
+}

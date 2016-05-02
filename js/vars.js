@@ -14,4 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-connect()
+var socket = null
+var websocketPath = 'wss://' + window.location.host + '/socket'
+if (window.location.protocol !== "https:") {
+  websocketPath = 'ws://' + window.location.host + '/socket'
+}
+var inGame = ""
+var authtoken = ""
