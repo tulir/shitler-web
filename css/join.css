@@ -16,6 +16,35 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+.cantconnect {
+	text-align: center;
+	margin-top: 5rem;
+}
+
+.cantconnect > .text {
+	font-size: 300%;
+}
+
+.cantconnect > button {
+	font-size: 2rem;
+	background-color: #50D367;
+    padding: .375rem 1rem;
+    white-space: nowrap;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+	color: #FFFFFF;
+	border-radius: .25rem;
+	border: none;
+}
+
+.cantconnect > button:hover {
+	background-color: #47B9D7;
+	color: #FFFFFF;
+}
+
 .connecting {
 	margin-top: 5rem;
 	font-size: 300%;
