@@ -68,6 +68,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     animation-delay: .4s;
 }
 
+.btn-join, .join-text {
+	margin-bottom: .25rem;
+	width: 15rem;
+	box-sizing: border-box;
+}
+
 .btn-join {
 	border: 1px solid #50D367;
 	background-color: #50D367;
@@ -79,7 +85,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border: 1px solid #47B9D7;
 }
 
-.join-id {
+.join-text {
     padding: .375rem 1rem;
 	border-radius: .25rem;
 	border: 1px solid #9A9A9A;

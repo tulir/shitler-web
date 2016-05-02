@@ -14,11 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-var socket = null
-var websocketPath = 'wss://' + window.location.host + '/socket'
-if (window.location.protocol !== "https:") {
-  websocketPath = 'ws://' + window.location.host + '/socket'
+function nameChange() {
+	store.name = $("#join-name").val()
 }
-var connected = false
-var inGame = ""
-var authtoken = ""
+
+function joinBtn() {
+	join($("#join-id").val(), $("#join-name").val())
+}
+
+function join(game, name, authtoken) {
+	console.log("Joining game", game)
+	sendMessage({type: "join", game: game, name: name, authtoken: authtoken})
+}

@@ -1,5 +1,28 @@
 <div class="join">
 	<h1>Secret Hitler Web</h1>
-	<input class="join-id" type="text" autocomplete="off" placeholder="Enter game ID" onKeyDown="if(event.keyCode == 13){$('#join-game').click();}"/>
-	<button class="btn btn-join" type="button" onClick="join()">Join Game</button>
+	<input
+		class="join-text"
+		id="join-name"
+		type="text"
+		autocomplete="on"
+		placeholder="Enter nickname"
+		onChange="nameChange()"
+		onKeyUp="if(event.keyCode == 13){$('#join-id').focus()}"
+		data-value="name"
+	/>
+	<br>
+	<input
+		class="join-text"
+		id="join-id"
+		type="text"
+		autocomplete="off"
+		placeholder="Enter game ID"
+		onKeyUp="if(event.keyCode == 13){$('#join-game').click();}"
+	/>
+	<br>
+	<button
+		class="btn btn-join"
+		type="button"
+		onClick="joinBtn()"
+	>Join Game</button>
 </div>
