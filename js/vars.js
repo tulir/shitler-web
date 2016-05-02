@@ -19,5 +19,6 @@ var websocketPath = 'wss://' + window.location.host + '/socket'
 if (window.location.protocol !== "https:") {
   websocketPath = 'ws://' + window.location.host + '/socket'
 }
+var connected = false
 var inGame = ""
 var authtoken = ""
