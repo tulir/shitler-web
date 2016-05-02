@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-.cantconnect {
+.cantconnect, .connecting, .join {
 	text-align: center;
 	margin-top: 5rem;
 }
@@ -25,30 +25,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	font-size: 300%;
 }
 
-.cantconnect > button {
+.btn-cantconnect {
 	font-size: 2rem;
 	background-color: #50D367;
-    padding: .375rem 1rem;
-    white-space: nowrap;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
 	color: #FFFFFF;
-	border-radius: .25rem;
-	border: none;
 }
 
-.cantconnect > button:hover {
+.btn-cantconnect:hover {
 	background-color: #47B9D7;
-	color: #FFFFFF;
 }
 
 .connecting {
-	margin-top: 5rem;
 	font-size: 300%;
-	text-align: center;
 }
 
 @keyframes blink {
@@ -78,4 +66,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .connecting span:nth-child(3) {
     animation-delay: .4s;
+}
+
+.btn-join {
+	border: 1px solid #50D367;
+	background-color: #50D367;
+	color: #FFFFFF;
+}
+
+.btn-join:hover {
+	background-color: #47B9D7;
+	border: 1px solid #47B9D7;
+}
+
+.join-id {
+    padding: .375rem 1rem;
+	border-radius: .25rem;
+	border: 1px solid #9A9A9A;
 }
