@@ -16,6 +16,7 @@
 
 function connect() {
   console.log("Connecting to socket...")
+  $("#container").loadTemplate($("#template-connecting"), {append: false, isFile: false, async: false})
 
   socket = new WebSocket(websocketPath)
   socket.onopen = onOpen
@@ -25,8 +26,15 @@ function connect() {
 
 function onOpen() {
   console.log("Successfully connected!")
+  connected = true
+  $("#container").loadTemplate($("#template-join"), {append: false, isFile: false, async: false})
 }
 
 function onClose() {
   console.log("Disconnected from server!")
+  if (connected) {
+    $("#container").loadTemplate($("#template-disconnected"), {append: false, isFile: false, async: false})
+  } else {
+    $("#container").loadTemplate($("#template-cantconnect"), {append: false, isFile: false, async: false})
+  }
 }
