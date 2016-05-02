@@ -33,7 +33,7 @@ function onOpen() {
 function onClose() {
   console.log("Disconnected from server!")
   if (connected) {
-    $("#container").loadTemplate($("#template-disconnected"), {append: false, isFile: false, async: false})
+    // TODO: show disconnected overlay if in-game
   } else {
     $("#container").loadTemplate($("#template-cantconnect"), {append: false, isFile: false, async: false})
   }
