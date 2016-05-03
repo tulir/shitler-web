@@ -32,22 +32,22 @@ function onPrejoinMessage(data) {
     $("#join-fail").removeClass("hidden")
     switch (data.message) {
     case "gamenotfound":
-      $("#join-fail").text(sprintf("Could not find the game %s!", data.game))
+      $("#join-fail").html(sprintf("Could not find the game <b>%s<b>!", data.game))
       break
 		case "gamestarted":
-      $("#join-fail").text(sprintf("The game %s has already started.", data.game))
+      $("#join-fail").html(sprintf("The game <b>%s<b> has already started.", data.game))
       break
 		case "full":
-      $("#join-fail").text(sprintf("The game %s is full.", data.game))
+      $("#join-fail").html(sprintf("The game <b>%s<b> is full.", data.game))
       break
 		case "nameused":
-      $("#join-fail").text(sprintf("The name <i>%s</i> is already in use.", data.game))
+      $("#join-fail").html(sprintf("The name <b>%s<b> is already in use.", data.game))
       break
 		case "invalidname":
-      $("#join-fail").text(sprintf("The name <i>%s</i> contains invalid characters.", data.name))
+      $("#join-fail").html(sprintf("The name <b>%s<b> contains invalid characters.", data.name))
       break
 		default:
-      $("#join-fail").text(sprintf("Unknown error while joining game: %s", data.message))
+      $("#join-fail").html(sprintf("Unknown error while joining game: <b>%s<b>", data.message))
     }
   }
 }
