@@ -27,3 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border-radius: .25rem;
 	border: none;
 }
+
+.hidden {
+    display: none;
+}
