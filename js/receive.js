@@ -27,6 +27,9 @@ function onPrejoinMessage(data) {
     store.authtoken = data.authtoken
     console.log("Successfully joined game", data.game, "as", data.name)
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
+    data.players.forEach(function(val, key, map) {
+      $("#players").loadTemplate(sprintf("<div class='player %s'>%s</div>", val ? "disconnected" : "", key))
+    })
   } else {
     console.log("Failed to join game", data.game, "as", data.name + ":", data.message)
     $("#join-fail").removeClass("hidden")
