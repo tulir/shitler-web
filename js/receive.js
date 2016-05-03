@@ -24,22 +24,23 @@ function onMessage(evt) {
 
 function onPrejoinMessage(data) {
   if (data.success) {
-    authtoken = data["authtoken"]
-    // TODO joined game data["game"]
+    store.authtoken = data.authtoken
+    console.log("Successfully joined game!")
   } else {
+    $("#join-fail").removeClass("hidden")
     switch (data.message) {
     case "gamenotfound":
-			// TODO Inform user: "Could not find the given game!"
+      $("#join-fail").text("Could not find the given game!")
 		case "gamestarted":
-			// TODO Inform user: "That game has already started (try giving your authtoken?)"
+      $("#join-fail").text(sprintf("The game %s has already started.", $("#game-id").val()))
 		case "full":
-			// TODO Inform user: "That game is full (try giving your authtoken?)"
+      $("#join-fail").text(sprintf("The game %s is full.", $("#game-id").val()))
 		case "nameused":
-      // TODO Inform user: "The name <NAME> is already in use (try giving your authtoken?)"
+      $("#join-fail").text(sprintf("The name <i>%s</i> is already in use.", $("#join-name").val()))
 		case "invalidname":
-			// TODO Inform user: "Your name contains invalid characters or is too short or long"
+      $("#join-fail").text(sprintf("The name <i>%s</i> contains invalid characters.", $("#join-name").val()))
 		default:
-      // TODO Inform user: unknown error
+      $("#join-fail").text(sprintf("Unknown error while joining game: %s", data.message))
     }
   }
 }
