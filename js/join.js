@@ -22,7 +22,14 @@ function joinBtn() {
 	join($("#join-id").val(), $("#join-name").val())
 }
 
-function join(game, name, authtoken) {
+function createBtn() {
+	$.get("/create", function(data) {
+		console.log("Created game", data)
+		join(data, $("#join-name").val())
+	});
+}
+
+function join(game, name) {
 	console.log("Joining game", game)
 	sendMessage({type: "join", game: game, name: name, authtoken: store.authtoken})
 }
