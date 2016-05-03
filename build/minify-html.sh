@@ -20,6 +20,7 @@ minifyappend() {
 
 touch templates.min.html
 minifyappend join
+minifyappend lobby
 minifyappend cantconnect
 minifyappend connecting
 
