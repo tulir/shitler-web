@@ -70,7 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .btn-join, .join-text {
 	margin-bottom: .25rem;
-	width: 15rem;
+	width: 100%;
 	box-sizing: border-box;
 }
 
@@ -89,4 +89,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     padding: .375rem 1rem;
 	border-radius: .25rem;
 	border: 1px solid #9A9A9A;
+}
+
+.join-things {
+	width: 15rem;
 }
