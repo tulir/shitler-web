@@ -25,21 +25,27 @@ function onMessage(evt) {
 function onPrejoinMessage(data) {
   if (data.success) {
     store.authtoken = data.authtoken
-    console.log("Successfully joined game!")
+    console.log("Successfully joined game", data.game, "as", data.name)
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
   } else {
+    console.log("Failed to join game", data.game, "as", data.name + ":", data.message)
     $("#join-fail").removeClass("hidden")
     switch (data.message) {
     case "gamenotfound":
       $("#join-fail").text(sprintf("Could not find the game %s!", data.game))
+      break
 		case "gamestarted":
       $("#join-fail").text(sprintf("The game %s has already started.", data.game))
+      break
 		case "full":
       $("#join-fail").text(sprintf("The game %s is full.", data.game))
+      break
 		case "nameused":
       $("#join-fail").text(sprintf("The name <i>%s</i> is already in use.", data.game))
+      break
 		case "invalidname":
       $("#join-fail").text(sprintf("The name <i>%s</i> contains invalid characters.", data.name))
+      break
 		default:
       $("#join-fail").text(sprintf("Unknown error while joining game: %s", data.message))
     }
