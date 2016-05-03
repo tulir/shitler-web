@@ -22,7 +22,6 @@ if (window.location.protocol !== "https:") {
 }
 var connected = false
 var inGame = ""
-var authtoken = ""
 
 function sendMessage(payload) {
   if(payload === undefined || payload === null || payload.length === 0) {

@@ -24,5 +24,5 @@ function joinBtn() {
 
 function join(game, name, authtoken) {
 	console.log("Joining game", game)
-	sendMessage({type: "join", game: game, name: name, authtoken: authtoken})
+	sendMessage({type: "join", game: game, name: name, authtoken: store.authtoken})
 }
