@@ -26,19 +26,20 @@ function onPrejoinMessage(data) {
   if (data.success) {
     store.authtoken = data.authtoken
     console.log("Successfully joined game!")
+    $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
   } else {
     $("#join-fail").removeClass("hidden")
     switch (data.message) {
     case "gamenotfound":
-      $("#join-fail").text("Could not find the given game!")
+      $("#join-fail").text(sprintf("Could not find the game %s!", data.game))
 		case "gamestarted":
-      $("#join-fail").text(sprintf("The game %s has already started.", $("#game-id").val()))
+      $("#join-fail").text(sprintf("The game %s has already started.", data.game))
 		case "full":
-      $("#join-fail").text(sprintf("The game %s is full.", $("#game-id").val()))
+      $("#join-fail").text(sprintf("The game %s is full.", data.game))
 		case "nameused":
-      $("#join-fail").text(sprintf("The name <i>%s</i> is already in use.", $("#join-name").val()))
+      $("#join-fail").text(sprintf("The name <i>%s</i> is already in use.", data.game))
 		case "invalidname":
-      $("#join-fail").text(sprintf("The name <i>%s</i> contains invalid characters.", $("#join-name").val()))
+      $("#join-fail").text(sprintf("The name <i>%s</i> contains invalid characters.", data.name))
 		default:
       $("#join-fail").text(sprintf("Unknown error while joining game: %s", data.message))
     }
