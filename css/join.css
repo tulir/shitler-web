@@ -94,8 +94,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .join-things {
 	position: absolute;
-	width: 15rem;
+	width: 20rem;
 	text-align: center;
-	right: calc(50% - 7.5rem);
-	left: calc(50% - 7.5rem);
+	right: calc(50% - 10rem);
+	left: calc(50% - 10rem);
+}
+
+.join-fail {
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #A94444;
+    border-color: #EBCCCC;
+    background-color: #F2DEDE;
 }
