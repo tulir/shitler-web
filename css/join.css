@@ -92,5 +92,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .join-things {
+	position: absolute;
 	width: 15rem;
+	text-align: center;
+	right: calc(50% - 7.5rem);
+	left: calc(50% - 7.5rem);
 }
