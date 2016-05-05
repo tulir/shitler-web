@@ -16,7 +16,7 @@
 
 "use strict"
 var store = window.localStorage
-if (store.authtokens.length === 0) {
+if (store.authtokens === undefined || store.authtokens.length === 0) {
   store.authtokens = "{}"
 }
 var socket = null
@@ -46,12 +46,12 @@ function sendMessage(payload) {
 }
 
 function setAuthToken(game, authtoken) {
-  ats = JSON.parse(store.authtokens)
+  var ats = JSON.parse(store.authtokens)
   ats[game] = authtoken
   store.authtokens = JSON.stringify(ats)
 }
 
 function getAuthToken(game) {
-  ats = JSON.parse(store.authtokens)
+  var ats = JSON.parse(store.authtokens)
   return ats[game]
 }
