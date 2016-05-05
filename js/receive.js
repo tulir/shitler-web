@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function recHandlers() {}
+var recHandlers = {}
 
 function onMessage(evt) {
   var data = JSON.parse(evt.data)
@@ -27,9 +27,12 @@ function onPrejoinMessage(data) {
     store.authtoken = data.authtoken
     console.log("Successfully joined game", data.game, "as", data.name)
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
-    data.players.forEach(function(val, key, map) {
-      $("#players").loadTemplate(sprintf("<div class='player %s'>%s</div>", val ? "disconnected" : "", key))
-    })
+    for (var name in players){
+      if (players.hasOwnProperty(name)) {
+        $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", name))
+      }
+    }
+    inGame = data.game
   } else {
     console.log("Failed to join game", data.game, "as", data.name + ":", data.message)
     $("#join-fail").removeClass("hidden")
@@ -55,106 +58,108 @@ function onPrejoinMessage(data) {
   }
 }
 
-recHandlers.prototype.join = function(data) {
+recHandlers.join = function(data) {
+  $("#chat").append(sprintf("%s joined the game<br>", data.name))
+  $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", name))
+}
+
+recHandlers.quit = function(data) {
+  $("#chat").append(sprintf("%s left the game<br>", data.name))
+  $(sprintf("#player-%s", data.name)).remove()
+}
+
+recHandlers.chat = function(data) {
+  $("#chat").append(sprintf("&lt;%s&gt; %s<br>", data.sender, data.message))
+}
+
+recHandlers.connected = function(data) {
+  $(sprintf("#player-%s", data.name)).removeClass("disconnected")
+}
+
+recHandlers.disconnected = function(data) {
+  $(sprintf("#player-%s", data.name)).addClass("disconnected")
+}
+
+recHandlers.start = function(data) {
 
 }
 
-recHandlers.prototype.quit = function(data) {
+recHandlers.president = function(data) {
 
 }
 
-recHandlers.prototype.quit = function(data) {
+recHandlers.startvote = function(data) {
 
 }
 
-recHandlers.prototype.connected = function(data) {
+recHandlers.vote = function(data) {
 
 }
 
-recHandlers.prototype.disconnected = function(data) {
+recHandlers.cards = function(data) {
 
 }
 
-recHandlers.prototype.start = function(data) {
+recHandlers.presidentdiscard = function(data) {
 
 }
 
-recHandlers.prototype.president = function(data) {
+recHandlers.chancellordiscard = function(data) {
 
 }
 
-recHandlers.prototype.startvote = function(data) {
+recHandlers.table = function(data) {
 
 }
 
-recHandlers.prototype.vote = function(data) {
+recHandlers.enact = function(data) {
 
 }
 
-recHandlers.prototype.cards = function(data) {
+recHandlers.forceenact = function(data) {
 
 }
 
-recHandlers.prototype.presidentdiscard = function(data) {
+recHandlers.peek = function(data) {
 
 }
 
-recHandlers.prototype.chancellordiscard = function(data) {
+recHandlers.peekcards = function(data) {
 
 }
 
-recHandlers.prototype.table = function(data) {
+recHandlers.investigateresult = function(data) {
 
 }
 
-recHandlers.prototype.enact = function(data) {
+recHandlers.investigate = function(data) {
 
 }
 
-recHandlers.prototype.forceenact = function(data) {
+recHandlers.presidentselect = function(data) {
 
 }
 
-recHandlers.prototype.peek = function(data) {
+recHandlers.execute = function(data) {
 
 }
 
-recHandlers.prototype.peekcards = function(data) {
+recHandlers.investigated = function(data) {
 
 }
 
-recHandlers.prototype.investigateresult = function(data) {
+recHandlers.presidentselected = function(data) {
 
 }
 
-recHandlers.prototype.investigate = function(data) {
+recHandlers.executed = function(data) {
 
 }
 
-recHandlers.prototype.presidentselect = function(data) {
+recHandlers.end = function(data) {
 
 }
 
-recHandlers.prototype.execute = function(data) {
-
-}
-
-recHandlers.prototype.investigated = function(data) {
-
-}
-
-recHandlers.prototype.presidentselected = function(data) {
-
-}
-
-recHandlers.prototype.executed = function(data) {
-
-}
-
-recHandlers.prototype.end = function(data) {
-
-}
-
-recHandlers.prototype.error = function(data) {
+recHandlers.error = function(data) {
 
 }
