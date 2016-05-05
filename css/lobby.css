@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	top: 3.5rem;
 	right: .1rem;
 	bottom: 2.5rem;
-	left: 18.2rem;
+	left: 12.2rem;
 
 	overflow-x: scroll;
 
@@ -44,7 +44,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .lobby > .chat-input-wrapper {
 	right: .1rem;
-	left: 18.2rem;
+	left: 12.2rem;
+}
+
+.start-wrapper {
+	right: calc(100% - 12rem);
+	left: .1rem;
+}
+
+.lobby > .chat-input-wrapper, .start-wrapper {
+	position: fixed;
+	bottom: .1rem;
+
+	height: 2.4rem;
+}
+
+.start {
+	font-size: 1rem;
+	font-weight: bold;
 }
 
 .lobby > .chat-input-wrapper > .chat-input, .start {
@@ -56,6 +73,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	border: 1px solid #9A9A9A;
 	border-radius: .25rem;
+}
+
+.lobby > .players {
+	position: fixed;
+	top: 3.5rem;
+	right: calc(100% - 12rem);
+	bottom: 2.5rem;
+	left: 0;
+
+	text-align: center;
 }
 
 .lobby > .players > .player {
@@ -71,40 +98,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border: 1px solid #9A9A9A;
 	border-radius: .25rem;
 
-	font-size: 1.5rem;
+	font-size: .8rem;
 	font-weight: bold;
-}
-
-.lobby > .players {
-	position: fixed;
-	top: 3.5rem;
-	right: calc(100% - 18rem);
-	bottom: 2.5rem;
-	left: 0;
-
-	text-align: center;
-}
-
-
-.lobby > .chat-input-wrapper, .start-wrapper{
-	position: fixed;
-	bottom: .1rem;
-
-	height: 2.4rem;
 }
 
 .lobby > .players > .player.disconnected {
 	background-color: #9A9A9A;
-}
-
-.start-wrapper {
-	right: calc(100% - 18rem);
-	left: .1rem;
-}
-
-.start {
-	font-size: 1rem;
-	font-weight: bold;
 }
 
 .canstart {
@@ -116,4 +115,68 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .canstart:hover {
 	border: 1px solid #47B9D7;
 	background-color: #47B9D7;
+}
+
+.lobbyof {
+	display: none;
+}
+
+@media (min-width: 550px) {
+	.lobby > .chat, .lobby > .chat-input-wrapper {
+		left: 15.2rem;
+	}
+
+	.lobby > .players, .start-wrapper {
+		right: calc(100% - 15rem);
+	}
+
+	.lobby > .players > .player {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 750px) {
+	.lobby > .chat, .lobby > .chat-input-wrapper {
+		left: 18.2rem;
+	}
+
+	.lobby > .players, .start-wrapper {
+		right: calc(100% - 18rem);
+	}
+
+	.lobby > .players > .player {
+		font-size: 1.2rem;
+	}
+
+	.lobbyof {
+		display: inline;
+	}
+}
+
+@media (min-width: 1000px) {
+	.lobby > .chat, .lobby > .chat-input-wrapper {
+		left: 24.2rem;
+	}
+
+	.lobby > .players, .start-wrapper {
+		right: calc(100% - 24rem);
+	}
+
+	.lobby > .players > .player {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 1500px) {
+	.lobby > .chat, .lobby > .chat-input-wrapper {
+		left: 30.2rem;
+	}
+
+	.lobby > .players, .start-wrapper {
+		right: calc(100% - 30rem);
+	}
+
+	.lobby > .players > .player {
+		font-size: 1.8rem;
+	}
 }
