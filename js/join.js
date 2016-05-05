@@ -37,4 +37,5 @@ function join(game, name) {
   "use strict"
 	console.log("Joining game", game)
 	sendMessage({type: "join", game: game, name: name, authtoken: getAuthToken(game)})
+  document.location.hash = game
 }
