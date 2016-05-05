@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	top: 3.5rem;
 	right: .1rem;
 	bottom: 2.5rem;
-	left: 50%;
+	left: 18.2rem;
 
 	overflow-x: scroll;
 
@@ -51,11 +51,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .lobby > .chat-input-wrapper {
 	right: .1rem;
-	left: calc(50% + .1rem);
+	left: 18.2rem;
 }
 
 .start-wrapper {
-	right: calc(50% + .1rem);
+	right: calc(100% - 18rem);
 	left: .1rem;
 }
 
@@ -89,7 +89,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .lobby > .players {
 	position: fixed;
 	top: 3.5rem;
-	right: 50%;
+	right: calc(100% - 18rem);
 	bottom: 2.5rem;
 	left: 0;
 
@@ -98,10 +98,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .lobby > .players > .player {
 	box-sizing: border-box;
-	width: 95%;
-	margin-right: 2.5%;
+	width: calc(100% - .2rem);
+	margin-right: .1rem;
 	margin-bottom: .5rem;
-	margin-left: 2.5%;
+	margin-left: .1rem;
 	padding: .5rem;
 
 	text-align: center;
