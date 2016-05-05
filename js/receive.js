@@ -17,6 +17,8 @@
 "use strict"
 var recHandlers = {}
 
+var lobbyPlayer = "<div class='player %2$s' id='player-%1$s'>%1$s</div>"
+
 function onMessage(evt) {
   "use strict"
   var data = JSON.parse(evt.data)
@@ -33,7 +35,7 @@ function onPrejoinMessage(data) {
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
     for (var name in data.players){
       if (data.players.hasOwnProperty(name)) {
-        $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", data.players[name] ? "" : "disconnected", name))
+        $("#players").append(sprintf(lobbyPlayer, name, data.players[name] ? "" : "disconnected"))
         players++
       }
     }
@@ -69,7 +71,7 @@ function onPrejoinMessage(data) {
 recHandlers.join = function(data) {
   "use strict"
   $("#chat").append(sprintf("%s joined the game<br>", data.name))
-  $("#players").append(sprintf("<div class='player' id='player-%1$s'>%1$s</div>", data.name))
+  $("#players").append(sprintf(lobbyPlayer, data.name, ""))
   players++
   if (players >= 5) {
     $("#start").addClass("canstart")
