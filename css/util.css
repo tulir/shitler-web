@@ -18,14 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .btn {
     padding: .375rem 1rem;
-    white-space: nowrap;
+
+    cursor: pointer;
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    -webkit-user-select: none;
     user-select: none;
-    cursor: pointer;
-	border-radius: .25rem;
+    white-space: nowrap;
+
 	border: none;
+	border-radius: .25rem;
 }
 
 .hidden {

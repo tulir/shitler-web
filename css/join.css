@@ -17,8 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 .cantconnect, .connecting, .join {
-	text-align: center;
 	margin-top: 5rem;
+
+	text-align: center;
 }
 
 .cantconnect > .text {
@@ -26,9 +27,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .btn-cantconnect {
-	font-size: 2rem;
-	background-color: #50D367;
 	color: #FFFFFF;
+	background-color: #50D367;
+
+	font-size: 2rem;
 }
 
 .btn-cantconnect:hover {
@@ -57,6 +59,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     animation-name: blink;
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
+
     animation-fill-mode: both;
 }
 
@@ -69,44 +72,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .btn-join, .join-text {
-	margin-bottom: .25rem;
 	box-sizing: border-box;
+	margin-bottom: .25rem;
 }
 
 .btn-join {
+	width: 49%;
+
+	color: #FFFFFF;
 	border: 1px solid #50D367;
 	background-color: #50D367;
-	color: #FFFFFF;
-	width: 49%;
 }
 
 .btn-join:hover {
-	background-color: #47B9D7;
 	border: 1px solid #47B9D7;
+	background-color: #47B9D7;
 }
 
 .join-text {
-    padding: .375rem 1rem;
-	border-radius: .25rem;
-	border: 1px solid #9A9A9A;
 	width: 100%;
+    padding: .375rem 1rem;
+
+	border: 1px solid #9A9A9A;
+	border-radius: .25rem;
 }
 
 .join-things {
 	position: absolute;
-	width: 20rem;
-	text-align: center;
 	right: calc(50% - 10rem);
 	left: calc(50% - 10rem);
+
+	width: 20rem;
+
+	text-align: center;
 }
 
 .join-fail {
     box-sizing: border-box;
     margin-bottom: 1rem;
     padding: 1rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
+
     color: #A94444;
+    border: 1px solid transparent;
     border-color: #EBCCCC;
+    border-radius: .25rem;
     background-color: #F2DEDE;
 }
