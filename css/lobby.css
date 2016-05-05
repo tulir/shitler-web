@@ -31,6 +31,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	right: .1rem;
 	bottom: 2.5rem;
 	left: 50%;
+
+	overflow-x: scroll;
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+
+    overflow-wrap: break-word;
 }
 
 .chat-input-wrapper {
@@ -57,7 +66,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	position: fixed;
 	top: 3rem;
 	right: 50%;
-	bottom: 0;
+	bottom: 2.5rem;
 	left: 0;
 
 	text-align: center;
