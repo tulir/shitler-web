@@ -42,21 +42,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     overflow-wrap: break-word;
 }
 
-.lobby > .chat-input-wrapper, .start-wrapper{
-	position: fixed;
-	bottom: .1rem;
-
-	height: 2.4rem;
-}
-
 .lobby > .chat-input-wrapper {
 	right: .1rem;
 	left: 18.2rem;
-}
-
-.start-wrapper {
-	right: calc(100% - 18rem);
-	left: .1rem;
 }
 
 .lobby > .chat-input-wrapper > .chat-input, .start {
@@ -68,32 +56,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	border: 1px solid #9A9A9A;
 	border-radius: .25rem;
-}
-
-.start {
-	font-size: 1rem;
-	font-weight: bold;
-}
-
-.canstart {
-	color: #FFFFFF;
-	border: 1px solid #50D367;
-	background-color: #50D367;
-}
-
-.canstart:hover {
-	border: 1px solid #47B9D7;
-	background-color: #47B9D7;
-}
-
-.lobby > .players {
-	position: fixed;
-	top: 3.5rem;
-	right: calc(100% - 18rem);
-	bottom: 2.5rem;
-	left: 0;
-
-	text-align: center;
 }
 
 .lobby > .players > .player {
@@ -113,6 +75,45 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	font-weight: bold;
 }
 
+.lobby > .players {
+	position: fixed;
+	top: 3.5rem;
+	right: calc(100% - 18rem);
+	bottom: 2.5rem;
+	left: 0;
+
+	text-align: center;
+}
+
+
+.lobby > .chat-input-wrapper, .start-wrapper{
+	position: fixed;
+	bottom: .1rem;
+
+	height: 2.4rem;
+}
+
 .lobby > .players > .player.disconnected {
 	background-color: #9A9A9A;
+}
+
+.start-wrapper {
+	right: calc(100% - 18rem);
+	left: .1rem;
+}
+
+.start {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.canstart {
+	color: #FFFFFF;
+	border: 1px solid #50D367;
+	background-color: #50D367;
+}
+
+.canstart:hover {
+	border: 1px solid #47B9D7;
+	background-color: #47B9D7;
 }
