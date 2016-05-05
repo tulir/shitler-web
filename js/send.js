@@ -24,3 +24,10 @@ function chat() {
 		message: msg
 	})
 }
+
+function tryStart(){
+	"use strict"
+	sendMessage({
+		type: "start"
+	})
+}
