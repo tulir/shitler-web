@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	text-align: center;
 
-	font-size: 2rem;
+	font-size: 1rem;
 }
 
 .lobby > .chat {
@@ -117,10 +117,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	background-color: #47B9D7;
 }
 
-.lobbyof {
-	display: none;
-}
-
 @media (min-width: 550px) {
 	.lobby > .chat, .lobby > .chat-input-wrapper {
 		left: 15.2rem;
@@ -132,6 +128,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	.lobby > .players > .player {
 		font-size: 1rem;
+	}
+
+	.lobby > .gamename {
+		font-size: 1.2rem;
 	}
 }
 
@@ -148,8 +148,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		font-size: 1.2rem;
 	}
 
-	.lobbyof {
-		display: inline;
+	.lobby > .gamename {
+		font-size: 1.5rem;
 	}
 }
 
@@ -164,6 +164,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	.lobby > .players > .player {
 		font-size: 1.5rem;
+	}
+
+	.lobby > .gamename {
+		font-size: 2rem;
 	}
 }
 
