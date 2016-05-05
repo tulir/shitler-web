@@ -32,7 +32,10 @@ function onOpen() {
   connected = true
   $("#container").loadTemplate($("#template-join"), {name: store.name}, {append: false, isFile: false, async: false})
   if (window.location.hash.length > 1) {
-    join(window.location.hash.substring(1))
+    $("#join-id").val(window.location.hash.substring(1))
+    if (store.name !== undefined && store.name.length !== 0) {
+      join(window.location.hash.substring(1), store.name)
+    }
   }
 }
 
