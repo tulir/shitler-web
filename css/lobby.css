@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .chat {
 	position: fixed;
-	top: 3rem;
+	top: 3.5rem;
 	right: .1rem;
 	bottom: 2.5rem;
 	left: 50%;
@@ -89,7 +89,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .players {
 	position: fixed;
-	top: 3rem;
+	top: 3.5rem;
 	right: 50%;
 	bottom: 2.5rem;
 	left: 0;
