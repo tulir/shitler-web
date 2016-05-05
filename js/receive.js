@@ -18,6 +18,7 @@ var recHandlers = {}
 
 function onMessage(evt) {
   var data = JSON.parse(evt.data)
+  console.log("<--", data)
   if (inGame.length === 0) onPrejoinMessage(data)
   else                     recHandlers[data.type](data)
 }
@@ -60,7 +61,7 @@ function onPrejoinMessage(data) {
 
 recHandlers.join = function(data) {
   $("#chat").append(sprintf("%s joined the game<br>", data.name))
-  $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", name))
+  $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", data.name))
 }
 
 recHandlers.quit = function(data) {

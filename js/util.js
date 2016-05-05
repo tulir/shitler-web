@@ -34,6 +34,7 @@ function sendMessage(payload) {
     return false
   }
 
+  console.log("-->", payload)
   socket.send(content)
   return true
 }
