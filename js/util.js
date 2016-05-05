@@ -16,6 +16,9 @@
 
 "use strict"
 var store = window.localStorage
+if (store.authtokens === undefined || store.authtokens === null) {
+  store.authtokens = {}
+}
 var socket = null
 var websocketPath = 'wss://' + window.location.host + '/socket'
 if (window.location.protocol !== "https:") {

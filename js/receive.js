@@ -28,7 +28,8 @@ function onMessage(evt) {
 function onPrejoinMessage(data) {
   "use strict"
   if (data.success) {
-    store.authtoken = data.authtoken
+    if (store.authtokens === undefined || store.authtokens === null) store.authtokens = {}
+    store.authtokens[data.game] = data.authtoken
     console.log("Successfully joined game", data.game, "as", data.name)
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
     for (var name in data.players){

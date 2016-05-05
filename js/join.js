@@ -36,5 +36,5 @@ function createBtn() {
 function join(game, name) {
   "use strict"
 	console.log("Joining game", game)
-	sendMessage({type: "join", game: game, name: name, authtoken: store.authtoken})
+	sendMessage({type: "join", game: game, name: name, authtoken: store.authtokens[game]})
 }
