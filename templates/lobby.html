@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<h1 class="gamename">Lobby of <span data-content-text="game"/></h1>
 
 	<div class="players" id="players"></div>
-	<div class="chat" id="chat"></div>
+	<div class="chat" onClick="$('#chat-input').focus()" id="chat"></div>
 	<div class="chat-input-wrapper">
 		<input class="chat-input"	onKeyUp="if(event.keyCode == 13){ chat() }" id="chat-input" type="text" autocomplete="off" placeholder="Enter chat message"/>
 	</div>
