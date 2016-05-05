@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"use strict"
 var store = window.localStorage
 var socket = null
 var websocketPath = 'wss://' + window.location.host + '/socket'
@@ -24,6 +25,7 @@ var connected = false
 var inGame = ""
 
 function sendMessage(payload) {
+  "use strict"
   if(payload === undefined || payload === null || payload.length === 0) {
     return false
   }

@@ -14,7 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"use strict"
 function connect() {
+  "use strict"
   console.log("Connecting to socket...")
   $("#container").loadTemplate($("#template-connecting"), {append: false, isFile: false, async: false})
 
@@ -25,6 +27,7 @@ function connect() {
 }
 
 function onOpen() {
+  "use strict"
   console.log("Successfully connected!")
   connected = true
   if (window.location.hash.length > 1) {
@@ -35,6 +38,7 @@ function onOpen() {
 }
 
 function onClose() {
+  "use strict"
   console.log("Disconnected from server!")
   if (connected) {
     // TODO: show disconnected overlay if in-game

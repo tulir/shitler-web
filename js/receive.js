@@ -14,9 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"use strict"
 var recHandlers = {}
 
 function onMessage(evt) {
+  "use strict"
   var data = JSON.parse(evt.data)
   console.log("<--", data)
   if (inGame.length === 0) onPrejoinMessage(data)
@@ -24,6 +26,7 @@ function onMessage(evt) {
 }
 
 function onPrejoinMessage(data) {
+  "use strict"
   if (data.success) {
     store.authtoken = data.authtoken
     console.log("Successfully joined game", data.game, "as", data.name)
@@ -60,107 +63,133 @@ function onPrejoinMessage(data) {
 }
 
 recHandlers.join = function(data) {
+  "use strict"
   $("#chat").append(sprintf("%s joined the game<br>", data.name))
   $("#players").append(sprintf("<div class='player' id='player-%1$s'>%1$s</div>", data.name))
 }
 
 recHandlers.quit = function(data) {
+  "use strict"
   $("#chat").append(sprintf("%s left the game<br>", data.name))
   $(sprintf("#player-%s", data.name)).remove()
 }
 
 recHandlers.chat = function(data) {
+  "use strict"
   $("#chat").append(sprintf("&lt;%s&gt; %s<br>", data.sender, data.message))
 }
 
 recHandlers.connected = function(data) {
+  "use strict"
   $(sprintf("#player-%s", data.name)).removeClass("disconnected")
 }
 
 recHandlers.disconnected = function(data) {
+  "use strict"
   $(sprintf("#player-%s", data.name)).addClass("disconnected")
 }
 
 recHandlers.start = function(data) {
+  "use strict"
 
 }
 
 recHandlers.president = function(data) {
+  "use strict"
 
 }
 
 recHandlers.startvote = function(data) {
+  "use strict"
 
 }
 
 recHandlers.vote = function(data) {
+  "use strict"
 
 }
 
 recHandlers.cards = function(data) {
+  "use strict"
 
 }
 
 recHandlers.presidentdiscard = function(data) {
+  "use strict"
 
 }
 
 recHandlers.chancellordiscard = function(data) {
+  "use strict"
 
 }
 
 recHandlers.table = function(data) {
+  "use strict"
 
 }
 
 recHandlers.enact = function(data) {
+  "use strict"
 
 }
 
 recHandlers.forceenact = function(data) {
+  "use strict"
 
 }
 
 recHandlers.peek = function(data) {
+  "use strict"
 
 }
 
 recHandlers.peekcards = function(data) {
+  "use strict"
 
 }
 
 recHandlers.investigateresult = function(data) {
+  "use strict"
 
 }
 
 recHandlers.investigate = function(data) {
+  "use strict"
 
 }
 
 recHandlers.presidentselect = function(data) {
+  "use strict"
 
 }
 
 recHandlers.execute = function(data) {
+  "use strict"
 
 }
 
 recHandlers.investigated = function(data) {
+  "use strict"
 
 }
 
 recHandlers.presidentselected = function(data) {
+  "use strict"
 
 }
 
 recHandlers.executed = function(data) {
+  "use strict"
 
 }
 
 recHandlers.end = function(data) {
+  "use strict"
 
 }
 
 recHandlers.error = function(data) {
+  "use strict"
 
 }

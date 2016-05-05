@@ -14,15 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+"use strict"
 function nameChange() {
+  "use strict"
 	store.name = $("#join-name").val()
 }
 
 function joinBtn() {
+  "use strict"
 	join($("#join-id").val(), $("#join-name").val())
 }
 
 function createBtn() {
+  "use strict"
 	$.get("/create", function(data) {
 		console.log("Created game", data)
 		join(data, $("#join-name").val())
@@ -30,6 +34,7 @@ function createBtn() {
 }
 
 function join(game, name) {
+  "use strict"
 	console.log("Joining game", game)
 	sendMessage({type: "join", game: game, name: name, authtoken: store.authtoken})
 }
