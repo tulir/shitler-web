@@ -34,7 +34,11 @@ function onPrejoinMessage(data) {
     for (var name in data.players){
       if (data.players.hasOwnProperty(name)) {
         $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", data.players[name] ? "" : "disconnected", name))
+        players++
       }
+    }
+    if (players >= 5) {
+      $("#start").addClass("canstart")
     }
     inGame = data.game
   } else {
@@ -66,12 +70,20 @@ recHandlers.join = function(data) {
   "use strict"
   $("#chat").append(sprintf("%s joined the game<br>", data.name))
   $("#players").append(sprintf("<div class='player' id='player-%1$s'>%1$s</div>", data.name))
+  players++
+  if (players >= 5) {
+    $("#start").addClass("canstart")
+  }
 }
 
 recHandlers.quit = function(data) {
   "use strict"
   $("#chat").append(sprintf("%s left the game<br>", data.name))
   $(sprintf("#player-%s", data.name)).remove()
+  players--
+  if (players < 5) {
+    $("#start").removeClass("canstart")
+  }
 }
 
 recHandlers.chat = function(data) {

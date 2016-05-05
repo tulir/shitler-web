@@ -23,6 +23,7 @@ if (window.location.protocol !== "https:") {
 }
 var connected = false
 var inGame = ""
+var players = 0
 
 function sendMessage(payload) {
   "use strict"
