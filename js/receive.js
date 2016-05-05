@@ -28,9 +28,9 @@ function onPrejoinMessage(data) {
     store.authtoken = data.authtoken
     console.log("Successfully joined game", data.game, "as", data.name)
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
-    for (var name in players){
-      if (players.hasOwnProperty(name)) {
-        $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", name))
+    for (var name in data.players){
+      if (data.players.hasOwnProperty(name)) {
+        $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", data.players[name] ? "" : "disconnected", name))
       }
     }
     inGame = data.game
@@ -61,7 +61,7 @@ function onPrejoinMessage(data) {
 
 recHandlers.join = function(data) {
   $("#chat").append(sprintf("%s joined the game<br>", data.name))
-  $("#players").append(sprintf("<div class='player %1$s' id='player-%2$s'>%2$s</div>", players[name] ? "disconnected" : "", data.name))
+  $("#players").append(sprintf("<div class='player' id='player-%1$s'>%1$s</div>", data.name))
 }
 
 recHandlers.quit = function(data) {

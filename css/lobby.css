@@ -43,12 +43,18 @@
 
 .player {
 	width: 95%;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+	margin-bottom: .5rem;
 	border: 1px solid #9A9A9A;
 	text-align: center;
-	padding: 1rem;
+	padding: .5rem;
 	font-size: 1.5rem;
+	font-weight: bold;
+	box-sizing: border-box;
+	border-radius: .25rem;
 }
 
-.player .disconnected {
+.disconnected {
 	background-color: #9A9A9A;
 }
