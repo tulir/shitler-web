@@ -30,10 +30,9 @@ function onOpen() {
   "use strict"
   console.log("Successfully connected!")
   connected = true
+  $("#container").loadTemplate($("#template-join"), {name: store.name}, {append: false, isFile: false, async: false})
   if (window.location.hash.length > 1) {
     join(window.location.hash.substring(1))
-  } else {
-    $("#container").loadTemplate($("#template-join"), {name: store.name}, {append: false, isFile: false, async: false})
   }
 }
 
