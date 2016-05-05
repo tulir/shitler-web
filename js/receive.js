@@ -77,6 +77,7 @@ recHandlers.quit = function(data) {
 recHandlers.chat = function(data) {
   "use strict"
   $("#chat").append(sprintf("&lt;%s&gt; %s<br>", data.sender, data.message))
+  $("#chat").scrollTop($("#chat")[0].scrollHeight)
 }
 
 recHandlers.connected = function(data) {
