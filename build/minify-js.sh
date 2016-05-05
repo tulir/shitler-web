@@ -4,6 +4,7 @@ cat \
     ./js/receive.js \
     ./js/join.js \
     ./js/connection.js \
+    ./js/send.js \
     ./js/init.js \
     > ./index.js
 
