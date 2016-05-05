@@ -20,6 +20,7 @@ cat \
     ./css/text.css \
     ./css/join.css \
     ./css/lobby.css \
+    ./css/game.css \
     > ./index.css
 
 yui-compressor ./index.css -o ./index.min.css
