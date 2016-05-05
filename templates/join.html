@@ -16,39 +16,37 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div class="join">
-	<h1>Secret Hitler Web</h1>
-	<div class="join-things">
-		<div class="join-fail hidden" id="join-fail"></div>
-		<input
-			class="join-text"
-			id="join-name"
-			type="text"
-			autocomplete="on"
-			placeholder="Enter nickname"
-			onChange="nameChange()"
-			onKeyUp="if(event.keyCode == 13){$('#join-id').focus()}"
-			data-value="name"
-		/>
-		<br>
-		<input
-			class="join-text"
-			id="join-id"
-			type="text"
-			autocomplete="off"
-			placeholder="Enter game ID"
-			onKeyUp="if(event.keyCode == 13){$('#join-game').click();}"
-		/>
-		<br>
-		<button
-			class="btn btn-join"
-			type="button"
-			onClick="joinBtn()"
-		>Join</button>
-		<button
-			class="btn btn-join"
-			type="button"
-			onClick="createBtn()"
-		>Create</button>
-	</div>
+<h1>Secret Hitler Web</h1>
+<div class="join-things">
+	<div class="join-fail hidden" id="join-fail"></div>
+	<input
+		class="join-text"
+		id="join-name"
+		type="text"
+		autocomplete="on"
+		placeholder="Enter nickname"
+		onChange="nameChange()"
+		onKeyUp="if(event.keyCode == 13){$('#join-id').focus()}"
+		data-value="name"
+	/>
+	<br>
+	<input
+		class="join-text"
+		id="join-id"
+		type="text"
+		autocomplete="off"
+		placeholder="Enter game ID"
+		onKeyUp="if(event.keyCode == 13){$('#join-game').click();}"
+	/>
+	<br>
+	<button
+		class="btn btn-join"
+		type="button"
+		onClick="joinBtn()"
+	>Join</button>
+	<button
+		class="btn btn-join"
+		type="button"
+		onClick="createBtn()"
+	>Create</button>
 </div>
