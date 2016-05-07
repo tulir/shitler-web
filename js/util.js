@@ -25,6 +25,7 @@ if (window.location.protocol !== "https:") {
   websocketPath = 'ws://' + window.location.host + '/socket'
 }
 var connected = false
+var myname = ""
 var inGame = ""
 var players = 0
 var playerMap = {}
@@ -55,4 +56,32 @@ function setAuthToken(game, authtoken) {
 function getAuthToken(game) {
   var ats = JSON.parse(store.authtokens)
   return ats[game]
+}
+
+var tagsToEscape = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;'
+}
+
+function escapeTag(tag) {
+  return tagsToEscape[tag] || tag
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>]/g, escapeTag)
+}
+
+function statuschat(msg) {
+  status(msg)
+  chat(msg)
+}
+
+function status(msg) {
+  $("#status").text(msg)
+}
+
+function chat(msg) {
+  $("#chat").append(msg + "<br>")
+  $("#chat").scrollTop($("#chat")[0].scrollHeight)
 }

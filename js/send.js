@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 "use strict"
-function chat() {
+function sendChat() {
 	"use strict"
 	var msg = $("#chat-input").val()
 	$("#chat-input").val("")

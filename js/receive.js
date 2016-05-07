@@ -32,6 +32,7 @@ function onPrejoinMessage(data) {
   if (data.success) {
     setAuthToken(data.game, data.authtoken)
     console.log("Successfully joined game", data.game, "as", data.name)
+    myname = data.name
     $("#container").loadTemplate($("#template-lobby"), {game: data.game}, {append: false, isFile: false, async: false})
     for (var name in data.players){
       if (data.players.hasOwnProperty(name)) {
@@ -90,8 +91,7 @@ recHandlers.quit = function(data) {
 
 recHandlers.chat = function(data) {
   "use strict"
-  $("#chat").append(sprintf("&lt;%s&gt; %s<br>", data.sender, data.message))
-  $("#chat").scrollTop($("#chat")[0].scrollHeight)
+  chat(sprintf("<b>&lt;%s&gt;</b> %s<br>", data.sender, escapeHtml(data.message)))
 }
 
 recHandlers.connected = function(data) {
@@ -107,15 +107,15 @@ recHandlers.disconnected = function(data) {
 recHandlers.start = function(data) {
   "use strict"
   $("#container").loadTemplate($("#template-game"), {append: false, isFile: false, async: false})
-  // TODO chat message about role
+  chat(sprintf("The game is starting. You're a %s", data.role))
   playerMap = data.players
+  playerMap[myname] = data.role
   updatePlayers()
 }
 
 recHandlers.president = function(data) {
   "use strict"
-  $("#status").text(sprintf("%s is picking a chancellor"), data.name)
-  // TODO chat message ^
+  statuschat(sprintf("%s is picking a chancellor", data.name))
 }
 
 recHandlers.startvote = function(data) {
@@ -126,8 +126,7 @@ recHandlers.startvote = function(data) {
 
 recHandlers.vote = function(data) {
   "use strict"
-  $("#status").text(sprintf("You voted %s. Waiting for others to vote...", data.vote))
-  // TODO chat message ^
+  statuschat(sprintf("You voted %s. Waiting for others to vote...", data.vote))
 }
 
 recHandlers.cards = function(data) {
@@ -137,12 +136,12 @@ recHandlers.cards = function(data) {
 
 recHandlers.presidentdiscard = function(data) {
   "use strict"
-
+  status(sprintf("The president is now discarding a card"))
 }
 
 recHandlers.chancellordiscard = function(data) {
   "use strict"
-
+  status(sprintf("The chancellor is now discarding a card"))
 }
 
 recHandlers.table = function(data) {
@@ -152,12 +151,12 @@ recHandlers.table = function(data) {
 
 recHandlers.enact = function(data) {
   "use strict"
-
+  statuschat(sprintf("President %s and chancellor %s have enacted %s policy", data.president, data.chancellor, data.policy))
 }
 
 recHandlers.forceenact = function(data) {
   "use strict"
-
+  statuschat(sprintf("The frustrated populace has forcefully enacted a %s policy.", data.president, data.chancellor, data.policy))
 }
 
 recHandlers.peek = function(data) {
