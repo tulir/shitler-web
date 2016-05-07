@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	right: 20.25rem;
 	left: .25rem;
 
-	height: 27.5rem;
+	height: 12.5rem;
 }
 
 .player {
@@ -45,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	box-sizing: border-box;
 	width: calc(50% - .5rem);
-	height: 5rem;
+	height: 2rem;
 	margin-right: .25rem;
 	margin-bottom: .25rem;
 
@@ -57,27 +57,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .player-name {
-	font-size: 1.5rem;
+	font-size: .8rem;
 	font-weight: bold;
 }
 
 .player-role {
 	color: #9A9A9A;
 
-	font-size: 1rem;
+	font-size: .5rem;
 }
 
 .player-role-icon {
 	float: right;
 
-	max-height: 5rem;
+	height: 100%;
 
 	border-radius: 50%;
 }
 
 .table {
 	position: fixed;
-	top: calc(100% - 27.5rem);
+	top: calc(100% - 12.5rem);
 	right: 20.25rem;
 	bottom: .25rem;
 	left: .25rem;
@@ -125,4 +125,91 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	border: 1px solid #9A9A9A;
 	border-radius: .25rem;
+}
+
+@media (min-width: 550px) {
+	.player {
+		height: 2.5rem;
+	}
+
+	.players {
+		height: 15rem;
+	}
+
+	.table {
+		top: calc(100% - 15rem);
+	}
+
+	.player-name {
+		font-size: .9rem;
+	}
+
+	.player-role {
+		font-size: .6rem;
+	}
+}
+
+@media (min-width: 750px) {
+	.player {
+		height: 3.5rem;
+	}
+
+	.players {
+		height: 20rem;
+	}
+
+	.table {
+		top: calc(100% - 20rem);
+	}
+
+	.player-name {
+		font-size: 1rem;
+	}
+
+	.player-role {
+		font-size: .7rem;
+	}
+}
+
+@media (min-width: 1000px) {
+	.player {
+		height: 5rem;
+	}
+
+	.players {
+		height: 27.5rem;
+	}
+
+	.table {
+		top: calc(100% - 27.5rem);
+	}
+
+	.player-name {
+		font-size: 1.2rem;
+	}
+
+	.player-role {
+		font-size: .8rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.player-name {
+		font-size: 1.5rem;
+	}
+
+	.player-role {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 1500px) {
+
+	.player-name {
+		font-size: 1.8rem;
+	}
+
+	.player-role {
+		font-size: 1.2rem;
+	}
 }
