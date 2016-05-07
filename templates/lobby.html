@@ -17,12 +17,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <div class="lobby">
-	<h1 class="gamename">Lobby of <span data-content-text="game"/></h1>
+	<h1 class="lobby-gamename">Lobby of <span data-content-text="game"/></h1>
 
-	<div class="players" id="players"/>
-	<div class="chat" onClick="$('#chat-input').focus()" id="chat"/>
-	<div class="chat-input-wrapper">
-		<input class="chat-input"	onKeyUp="if(event.keyCode == 13){ chat() }" id="chat-input" type="text" autocomplete="off" placeholder="Enter chat message"/>
+	<div class="lobby-players" id="players"/>
+	<div class="lobby-chat" onClick="$('#chat-input').focus()" id="chat"/>
+	<div class="lobby-chat-input-wrapper">
+		<input class="lobby-chat-input"	onKeyUp="if(event.keyCode == 13){ chat() }" id="chat-input" type="text" autocomplete="off" placeholder="Enter chat message"/>
 	</div>
 	<div class="start-wrapper">
 		<button class="start" id="start" onClick="tryStart()">Start Game</button>

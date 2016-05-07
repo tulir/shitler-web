@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-.lobby > .gamename {
+.lobby-gamename {
 	margin: .5rem;
 	padding: 0;
 
@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	font-size: 1rem;
 }
 
-.lobby > .chat {
+.lobby-chat {
 	position: fixed;
 	top: 3.5rem;
 	right: .1rem;
@@ -42,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     overflow-wrap: break-word;
 }
 
-.lobby > .chat-input-wrapper {
+.lobby-chat-input-wrapper {
 	right: .1rem;
 	left: 12.2rem;
 }
@@ -52,7 +52,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	left: .1rem;
 }
 
-.lobby > .chat-input-wrapper, .start-wrapper {
+.lobby-chat-input-wrapper, .start-wrapper {
 	position: fixed;
 	bottom: .1rem;
 
@@ -64,7 +64,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	font-weight: bold;
 }
 
-.lobby > .chat-input-wrapper > .chat-input, .start {
+.lobby-chat-input-wrapper > .chat-input, .start {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
@@ -75,7 +75,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border-radius: .25rem;
 }
 
-.lobby > .players {
+.lobby-players {
 	position: fixed;
 	top: 3.5rem;
 	right: calc(100% - 12rem);
@@ -85,7 +85,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	text-align: center;
 }
 
-.lobby > .players > .player {
+.lobby-player {
 	box-sizing: border-box;
 	width: calc(100% - .2rem);
 	margin-right: .1rem;
@@ -102,7 +102,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	font-weight: bold;
 }
 
-.lobby > .players > .player.disconnected {
+.lobby-player.disconnected {
 	background-color: #9A9A9A;
 }
 
@@ -118,69 +118,69 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 @media (min-width: 550px) {
-	.lobby > .chat, .lobby > .chat-input-wrapper {
+	.lobby-chat, .lobby-chat-input-wrapper {
 		left: 15.2rem;
 	}
 
-	.lobby > .players, .start-wrapper {
+	.lobby-players, .start-wrapper {
 		right: calc(100% - 15rem);
 	}
 
-	.lobby > .players > .player {
+	.lobby-player {
 		font-size: 1rem;
 	}
 
-	.lobby > .gamename {
+	.lobby-gamename {
 		font-size: 1.2rem;
 	}
 }
 
 @media (min-width: 750px) {
-	.lobby > .chat, .lobby > .chat-input-wrapper {
+	.lobby-chat, .lobby-chat-input-wrapper {
 		left: 18.2rem;
 	}
 
-	.lobby > .players, .start-wrapper {
+	.lobby-players, .start-wrapper {
 		right: calc(100% - 18rem);
 	}
 
-	.lobby > .players > .player {
+	.lobby-player {
 		font-size: 1.2rem;
 	}
 
-	.lobby > .gamename {
+	.lobby-gamename {
 		font-size: 1.5rem;
 	}
 }
 
 @media (min-width: 1000px) {
-	.lobby > .chat, .lobby > .chat-input-wrapper {
+	.lobby-chat, .lobby-chat-input-wrapper {
 		left: 24.2rem;
 	}
 
-	.lobby > .players, .start-wrapper {
+	.lobby-players, .start-wrapper {
 		right: calc(100% - 24rem);
 	}
 
-	.lobby > .players > .player {
+	.lobby-player {
 		font-size: 1.5rem;
 	}
 
-	.lobby > .gamename {
+	.lobby-gamename {
 		font-size: 2rem;
 	}
 }
 
 @media (min-width: 1500px) {
-	.lobby > .chat, .lobby > .chat-input-wrapper {
+	.lobby-chat, .lobby-chat-input-wrapper {
 		left: 30.2rem;
 	}
 
-	.lobby > .players, .start-wrapper {
+	.lobby-players, .start-wrapper {
 		right: calc(100% - 30rem);
 	}
 
-	.lobby > .players > .player {
+	.lobby-players > .player {
 		font-size: 1.8rem;
 	}
 }
