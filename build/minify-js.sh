@@ -17,6 +17,7 @@
 
 cat \
     ./js/util.js \
+    ./js/game.js \
     ./js/receive.js \
     ./js/join.js \
     ./js/connection.js \
