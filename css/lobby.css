@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	bottom: 2.5rem;
 	left: 12.2rem;
 
-	overflow-x: scroll;
+	overflow-y: scroll;
 
     white-space: pre-wrap;
     word-wrap: break-word;
