@@ -17,7 +17,7 @@
 "use strict"
 var recHandlers = {}
 
-var lobbyPlayer = "<div class='player %2$s' id='player-%1$s'>%1$s</div>"
+var lobbyPlayer = "<div class='lobby-player %2$s' id='player-%1$s'>%1$s</div>"
 
 function onMessage(evt) {
   "use strict"
@@ -106,22 +106,28 @@ recHandlers.disconnected = function(data) {
 
 recHandlers.start = function(data) {
   "use strict"
-
+  $("#container").loadTemplate($("#template-game"), {append: false, isFile: false, async: false})
+  // TODO chat message about role
+  playerMap = data.players
+  updatePlayers()
 }
 
 recHandlers.president = function(data) {
   "use strict"
-
+  $("#status").text(sprintf("%s is picking a chancellor"), data.name)
+  // TODO chat message ^
 }
 
 recHandlers.startvote = function(data) {
   "use strict"
-
+  $("#status").text(sprintf("Vote for president %s and chancellor %s"), data.president, data.chancellor)
+  // TODO chat message ^
 }
 
 recHandlers.vote = function(data) {
   "use strict"
-
+  $("#status").text(sprintf("You voted %s. Waiting for others to vote...", data.vote))
+  // TODO chat message ^
 }
 
 recHandlers.cards = function(data) {

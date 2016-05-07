@@ -39,6 +39,8 @@ minifyappend join
 minifyappend lobby
 minifyappend cantconnect
 minifyappend connecting
+minifyappend game
+minifyappend player
 
 if [ ! -f index.max.html ]; then
     mv index.html index.max.html

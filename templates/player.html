@@ -16,12 +16,16 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div id="status" class="status"/>
-<div id="players" class="players"/>
-
-<div id="chat" class="chat"/>
-<div class="chat-input-wrapper">
-	<input class="chat-input"	onKeyUp="if(event.keyCode == 13){ chat() }" id="chat-input" type="text" autocomplete="off" placeholder="Enter chat message"/>
+<div class="player">
+	<div class="player-name" data-content-text="name"/>
+	<div class="player-role" data-content-text="role"/>
+	<img
+		class="player-role-icon"
+		data-template-bind='[
+			{"attribute": "src", "value": "image"},
+			{"attribute": "alt", "value": "imagealt"}
+		]'
+		src="javascript:void(0)"
+		alt="unknown"
+	/>
 </div>
-
-<div id="table" class="table"/>
