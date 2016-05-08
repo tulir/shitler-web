@@ -116,6 +116,19 @@ recHandlers.start = function(data) {
 recHandlers.president = function(data) {
   "use strict"
   statuschat(sprintf("%s is picking a chancellor", data.name))
+  if (data.name === myname) {
+    playerPickReason = "pickchancellor"
+
+  	for (var name in playerMap) {
+  		if (!playerMap.hasOwnProperty(name)) continue
+      $(sprintf("#player-%s", name)).addClass("pickable")
+    }
+
+    data.unpickable.forEach(function(val, i, arr) {
+      $(sprintf("#player-%s", val)).removeClass("pickable")
+      $(sprintf("#player-%s", val)).addClass("not-pickable")
+    })
+  }
 }
 
 recHandlers.startvote = function(data) {
@@ -176,12 +189,16 @@ recHandlers.investigateresult = function(data) {
 
 recHandlers.investigate = function(data) {
   "use strict"
-
+  if (data.name === myname) {
+    playerPickReason = "investigate"
+  }
 }
 
 recHandlers.presidentselect = function(data) {
   "use strict"
-
+  if (data.name === myname) {
+    playerPickReason = "presidentselect"
+  }
 }
 
 recHandlers.execute = function(data) {
@@ -191,7 +208,9 @@ recHandlers.execute = function(data) {
 
 recHandlers.investigated = function(data) {
   "use strict"
-
+  if (data.name === myname) {
+    playerPickReason = "execute"
+  }
 }
 
 recHandlers.presidentselected = function(data) {

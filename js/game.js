@@ -16,7 +16,7 @@
 
 "use strict"
 
-function updatePlayers(){
+function updatePlayers() {
 	"use strict"
 	$("#players").empty()
 	for (var name in playerMap) {
@@ -30,4 +30,15 @@ function updatePlayers(){
 			imagealt: playerMap[name]
 		}, {append: true, isFile: false, async: false})
 	}
+}
+
+function playerClicked(name) {
+	"use strict"
+	if (playerPickReason.length === 0) {
+		return
+	}
+	sendMessage({
+		type: playerPickReason,
+		name: name
+	})
 }

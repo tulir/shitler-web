@@ -29,6 +29,7 @@ var myname = ""
 var inGame = ""
 var players = 0
 var playerMap = {}
+var playerPickReason = ""
 
 function sendMessage(payload) {
   "use strict"
