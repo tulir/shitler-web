@@ -64,6 +64,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	background-color: #DDE088;
 }
 
+.not-pickable {
+	cursor: not-allowed;
+}
+
 .president {
 	border: 2px solid #50D367;
 	background-color: #99EEAA;
