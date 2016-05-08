@@ -54,10 +54,13 @@ function setVote(vote) {
   if (vote === "ja") {
     $("#vote-ja").addClass("vote-selected")
     $("#vote-nein").removeClass("vote-selected")
-  } else {
+  } else if (vote === "nein") {
     $("#vote-ja").removeClass("vote-selected")
     $("#vote-nein").addClass("vote-selected")
-  }
+  } else {
+    $("#vote-ja").removeClass("vote-selected")
+    $("#vote-nein").removeClass("vote-selected")
+	}
 }
 
 function endVote() {
