@@ -23,6 +23,7 @@ function updatePlayers(){
 		if (!playerMap.hasOwnProperty(name)) continue
 	  $("#players").loadTemplate($("#template-player"), {
 			name: name,
+			click: sprintf("playerClicked(%s)", name),
 			id: sprintf("player-%s", name),
 			role: playerMap[name],
 			image: sprintf("/images/%s.png", playerMap[name]),
