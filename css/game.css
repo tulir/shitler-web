@@ -54,6 +54,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .pickable {
+	cursor: pointer;
+
 	border: 1px solid #D7D77D;
 	background-color: #DADEAA;
 }
