@@ -49,25 +49,20 @@ function playerClicked(name) {
 	}
 }
 
-function startVote() {
-	"use strict"
-  $("#vote").removeClass("hidden")
-}
-
 function setVote(vote) {
 	"use strict"
   if (vote === "ja") {
-    $("#vote-ja").addClass("selected")
-    $("#vote-nein").removeClass("selected")
+    $("#vote-ja").addClass("vote-selected")
+    $("#vote-nein").removeClass("vote-selected")
   } else {
-    $("#vote-ja").removeClass("selected")
-    $("#vote-nein").addClass("selected")
+    $("#vote-ja").removeClass("vote-selected")
+    $("#vote-nein").addClass("vote-selected")
   }
 }
 
 function endVote() {
 	"use strict"
-  $("#vote-ja").removeClass("selected")
-  $("#vote-nein").removeClass("selected")
-  $("#vote").addClass("hidden")
+  $("#vote-ja").removeClass("vote-selected")
+  $("#vote-nein").removeClass("vote-selected")
+  $("#votes").addClass("hidden")
 }

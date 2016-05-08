@@ -134,7 +134,7 @@ recHandlers.president = function(data) {
 recHandlers.startvote = function(data) {
   "use strict"
   status(sprintf("Vote for president %s and chancellor %s", data.president, data.chancellor))
-  startVote()
+  $("#votes").removeClass("hidden")
 }
 
 recHandlers.vote = function(data) {
@@ -150,6 +150,7 @@ recHandlers.cards = function(data) {
 recHandlers.presidentdiscard = function(data) {
   "use strict"
   status(sprintf("The president is now discarding a card"))
+  endVote()
 }
 
 recHandlers.chancellordiscard = function(data) {
