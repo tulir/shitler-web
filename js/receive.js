@@ -115,7 +115,7 @@ recHandlers.start = function(data) {
 
 recHandlers.president = function(data) {
   "use strict"
-  statuschat(sprintf("%s is picking a chancellor", data.name))
+  status(sprintf("%s is picking a chancellor", data.name))
   if (data.name === myname) {
     playerPickReason = "pickchancellor"
 
@@ -133,13 +133,12 @@ recHandlers.president = function(data) {
 
 recHandlers.startvote = function(data) {
   "use strict"
-  $("#status").text(sprintf("Vote for president %s and chancellor %s"), data.president, data.chancellor)
-  // TODO chat message ^
+  status(sprintf("Vote for president %s and chancellor %s"), data.president, data.chancellor)
 }
 
 recHandlers.vote = function(data) {
   "use strict"
-  statuschat(sprintf("You voted %s. Waiting for others to vote...", data.vote))
+  status(sprintf("You voted %s. Waiting for others to vote...", data.vote))
 }
 
 recHandlers.cards = function(data) {
