@@ -41,4 +41,10 @@ function playerClicked(name) {
 		type: playerPickReason,
 		name: name
 	})
+
+	for (var name in playerMap) {
+		if (!playerMap.hasOwnProperty(name)) continue
+		$(sprintf("#player-%s", name)).removeClass("clickable")
+		$(sprintf("#player-%s", name)).removeClass("not-clickable")
+	}
 }
