@@ -48,8 +48,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	height: 2rem;
 	margin-right: .25rem;
 	margin-bottom: .25rem;
+	padding: .1rem;
 
 	border-radius: .25rem;
+}
+
+.pickable {
+	border: 1px solid #D7D77D;
+	background-color: #DADEAA;
+}
+
+.pickable:hover {
+	background-color: #DDE088;
+}
+
+.president {
+	border: 2px solid #50D367;
+	background-color: #99EEAA;
 }
 
 .player-info {
@@ -107,7 +122,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     overflow-wrap: break-word;
 }
-
 
 .chat-input-wrapper {
 	position: fixed;
