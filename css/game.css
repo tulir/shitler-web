@@ -149,10 +149,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border-radius: .25rem;
 }
 
-.vote-ja, .vote-nein {
+.vote {
+	position: fixed;
 	z-index: 2;
+	bottom: 0;
+
+	width: 5rem;
+	padding: 1rem;
+
+	text-align: center;
+
+	border: 2px solid #9EA44B;
+	border-top-left-radius: .5rem;
+	border-top-right-radius: .5rem;
+	background-color: #B0B656;
 
 	font-size: 2rem;
+}
+
+.vote:hover {
+	background-color: #B6BD56;
+}
+
+.vote-ja {
+	right: 51%;
+}
+
+.vote-nein {
+	left: 51%;
+}
+
+.vote-selected {
+	padding-bottom: 3rem;
 }
 
 @media (min-height: 500px) {
