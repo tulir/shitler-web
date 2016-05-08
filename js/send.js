@@ -34,8 +34,15 @@ function tryStart(){
 
 function sendVote(vote) {
 	"use strict"
-	sendMessage({
-		type: "vote",
-		vote: vote
-	})
+	if($(sprintf("#vote-%s", vote)).hasClass("vote-selected")) {
+		sendMessage({
+			type: "vote",
+			vote: "none"
+		})
+	} else {
+		sendMessage({
+			type: "vote",
+			vote: vote
+		})
+	}
 }
