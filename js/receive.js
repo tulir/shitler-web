@@ -134,11 +134,12 @@ recHandlers.president = function(data) {
 recHandlers.startvote = function(data) {
   "use strict"
   status(sprintf("Vote for president %s and chancellor %s", data.president, data.chancellor))
+  startVote()
 }
 
 recHandlers.vote = function(data) {
   "use strict"
-  status(sprintf("You voted %s. Waiting for others to vote...", data.vote))
+  setVote(data.vote)
 }
 
 recHandlers.cards = function(data) {

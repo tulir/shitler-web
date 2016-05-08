@@ -149,6 +149,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	border-radius: .25rem;
 }
 
+.vote-ja, .vote-nein {
+	z-index: 2;
+
+	font-size: 2rem;
+}
+
 @media (min-height: 500px) {
 	.player {
 		height: 2.5rem;

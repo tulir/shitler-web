@@ -48,3 +48,26 @@ function playerClicked(name) {
 		$(sprintf("#player-%s", name)).removeClass("not-clickable")
 	}
 }
+
+function startVote() {
+	"use strict"
+  $("#vote").removeClass("hidden")
+}
+
+function setVote(vote) {
+	"use strict"
+  if (vote === "ja") {
+    $("#vote-ja").addClass("selected")
+    $("#vote-nein").removeClass("selected")
+  } else {
+    $("#vote-ja").removeClass("selected")
+    $("#vote-nein").addClass("selected")
+  }
+}
+
+function endVote() {
+	"use strict"
+  $("#vote-ja").removeClass("selected")
+  $("#vote-nein").removeClass("selected")
+  $("#vote").addClass("hidden")
+}

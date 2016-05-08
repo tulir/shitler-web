@@ -31,3 +31,11 @@ function tryStart(){
 		type: "start"
 	})
 }
+
+function sendVote(vote) {
+	"use strict"
+	sendMessage({
+		type: "vote",
+		vote: vote
+	})
+}
