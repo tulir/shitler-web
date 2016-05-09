@@ -135,6 +135,11 @@ recHandlers.startvote = function(data) {
   "use strict"
   status(sprintf("Vote for president %s and chancellor %s", data.president, data.chancellor))
   $("#votes").removeClass("hidden")
+	for (var name in playerMap) {
+    if (!playerMap.hasOwnProperty(name)) continue
+    $(sprintf("#player-%s", name)).removeClass("pickable")
+    $(sprintf("#player-%s", name)).removeClass("not-pickable")
+  }
 }
 
 recHandlers.vote = function(data) {
