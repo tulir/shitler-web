@@ -1,4 +1,6 @@
 # Secret Hitler Web client
+[![License](http://img.shields.io/:license-gpl3-blue.svg?style=flat-square)](http://www.gnu.org/licenses/gpl-3.0.html)
+
 A HTML5 client for my Secret Hitler server, [shitlerd](https://github.com/tulir293/shitlerd). An official hosted version is available at [shitler.in](https://shitler.in)
 
 # Attribution
