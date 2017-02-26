@@ -16,26 +16,28 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<script type="text/html" id="template-join">
-  <!--# include file="/templates/join.html" -->
-</script>
+<div class="join">
+	<h1 class="title">Secret Hitler Web</h1>
+	<div class="fail hidden" id="join-fail"/>
+	<form>
+		<input
+				class="textfield"
+				type="text"
+				autocomplete="on"
+				placeholder="Enter nick"
+				data-event="nick"
+				data-listen="keyup"
+				value="{{nick}}"/>
+		<input
+				class="textfield"
+				type="text"
+				autocomplete="off"
+				placeholder="Enter game ID"
+				data-event="gameid"
+				data-listen="keyup"
+				value="{{gameID}}"/>
 
-<script type="text/html" id="template-lobby">
-  <!--# include file="/templates/lobby.html" -->
-</script>
-
-<script type="text/html" id="template-cantconnect">
-  <!--# include file="/templates/cantconnect.html" -->
-</script>
-
-<script type="text/html" id="template-connecting">
-  <!--# include file="/templates/connecting.html" -->
-</script>
-
-<script type="text/html" id="template-game">
-  <!--# include file="/templates/game.html" -->
-</script>
-
-<script type="text/html" id="template-player">
-  <!--# include file="/templates/player.html" -->
-</script>
+		<button class="btn" type="button" data-event="create">Create</button>
+		<button class="btn" type="submit" data-event="join">Join</button>
+	</form>
+</div>

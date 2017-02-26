@@ -1,0 +1,43 @@
+{
+	"name": "shitler-web",
+	"version": "0.1.0",
+	"description": "A web client for shitlerd",
+	"author": "Tulir Asokan <tulir@maunium.net>",
+	"private": true,
+	"license": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tulir/shitler-web.git"
+	},
+	"dependencies": {
+		"normalize.css": "5.0.0",
+		"jquery": "3.1.1",
+		"handlebars": "4.0.6",
+
+		"node-sass": "4.5.0",
+		"html-minifier": "3.3.1",
+
+		"postcss-cli-simple": "1.0.3",
+		"autoprefixer": "6.7.2",
+		"babel-core": "6.22.1",
+		"babel-preset-es2015": "6.22.0",
+		"babel-preset-es2016": "6.22.0",
+		"browserify": "14.0.0",
+		"babelify": "7.3.0",
+		"strictify": "0.2.0",
+		"uglifyify": "3.0.4",
+		"uglifyjs": "2.4.10"
+	},
+	"devDependencies": {
+		"sass-lint": "1.10.2",
+		"htmlhint": "0.9.13",
+		"eslint": "3.15.0",
+		"eslint-config-airbnb-base": "11.1.0",
+		"eslint-plugin-import": "2.2.0",
+		"eslint-plugin-jsdoc": "2.4.0",
+		"jsdoc": "3.4.3"
+	},
+	"babel": {
+		"presets": ["es2015", "es2016"]
+	}
+}

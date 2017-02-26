@@ -1,4 +1,4 @@
-/*
+<!--
 shitler-web - A HTML5 client for shitlerd
 Copyright (C) 2016 Tulir Asokan
 
@@ -14,22 +14,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+-->
 
-.btn {
-    padding: .375rem 1rem;
-
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    white-space: nowrap;
-
-	border: none;
-	border-radius: .25rem;
-}
-
-.hidden {
-    display: none;
-}
+<div class="cant-connect">
+	<h1 class="text">Failed to connect to server!</h1>
+	<button class="btn" data-event="reconnect" type="button">Reconnect</button>
+</div>
