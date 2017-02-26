@@ -14,15 +14,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const $ = require("jquery")
+const InputHandler = require("./input")
+const OutputHandler = require("./output")
+const UIHandler = require("./ui")
 
 class GameHandler {
 	constructor(shitler) {
 		this.shitler = shitler
+		this.send = new OutputHandler(this)
+		this.recv = new InputHandler(this)
+		this.ui = new UIHandler(this)
 		this.playerMap = new Map()
 		this.playerPickReason = ""
 		this.currentNick = ""
 		this.currentGame = ""
+		this.started = false
 		this.playerCount = 0
+
+		this.table = {
+			deck: 0,
+			discarded: 0,
+			liberal: 0,
+			fascist: 0,
+		}
 
 		shitler.events.keyup("nick", obj => this.nick = obj.value)
 		shitler.events.keyup("gameid", obj => this.gameID = obj.value)
@@ -30,13 +44,21 @@ class GameHandler {
 				$.get("create", newGameID => {
 					console.log("Created game", newGameID)
 					this.gameID = newGameID
-					this.join()
+					this.send.join()
 				}))
-		shitler.events.click("join", () => this.join())
-		shitler.events.click("start", () => this.start())
-		shitler.events.click("vote", obj => this.vote($(obj).attr("data-vote")))
-		shitler.events.submit("chat", form =>
-				this.chat(form.find("input").val()))
+		shitler.events.click("join", () => this.send.join())
+		shitler.events.click("start", () => this.send.start())
+		shitler.events.click("vote", obj =>
+				this.send.vote($(obj).attr("data-vote")))
+		shitler.events.submit("chat", form => {
+			const input = $(form).find("input")
+			this.send.chat(input.val())
+			input.val("")
+		})
+		shitler.events.click("player", obj =>
+				this.playerClicked($(obj).attr("data-player")))
+		shitler.events.click("policy", obj =>
+				this.policyClicked($(obj).attr("data-index")))
 	}
 
 	hasJoined() {
@@ -60,78 +82,25 @@ class GameHandler {
 		window.location.hash = gameID
 	}
 
-	updatePlayers() {
-		$("#players").empty()
-		for (const [name, role] of this.playerMap) {
-			this.shitler.appendTemplate("player", { name, role },
-					this.shitler.container.find("#players"))
-		}
+	enterLobby(data) {
+		this.currentNick = data.name
+		this.currentGame = data.game
+		this.playerCount = Object.keys(data.players).length
+		this.ui.openLobby(data.players)
 	}
 
 	playerClicked(pickedPlayer) {
 		if (this.playerPickReason.length === 0) {
 			return
 		}
-		this.shitler.connection.sendMessage({
-			type: this.playerPickReason,
-			name: pickedPlayer,
-		})
+		this.send.pick(this.playerPickReason, pickedPlayer)
 
-		for (const [name] of this.playerMap) {
-			$(`#player-${name}`).removeClass("clickable")
-			$(`#player-${name}`).removeClass("not-clickable")
-		}
+		this.ui.stopPicking()
 	}
 
-	setVote(vote) {
-		switch (vote) {
-		case "ja":
-			$("#vote-ja").addClass("vote-selected")
-			$("#vote-nein").removeClass("vote-selected")
-			break
-		case "nein":
-			$("#vote-ja").removeClass("vote-selected")
-			$("#vote-nein").addClass("vote-selected")
-			break
-		default:
-			$("#vote-ja").removeClass("vote-selected")
-			$("#vote-nein").removeClass("vote-selected")
-		}
-	}
-
-	endVote() {
-		$("#vote-ja").removeClass("vote-selected")
-		$("#vote-nein").removeClass("vote-selected")
-		$("#votes").addClass("hidden")
-	}
-
-	join() {
-		this.shitler.connection.sendMessage({
-			type: "join",
-			game: this.gameID,
-			name: this.nick,
-			authtoken: this.shitler.getAuthToken(this.gameID),
-		})
-	}
-
-	vote(choice) {
-		this.shitler.connection.sendMessage({
-			type: "vote",
-			choice,
-		})
-	}
-
-	start() {
-		this.shitler.connection.sendMessage({
-			type: "start",
-		})
-	}
-
-	chat(msg) {
-		this.shitler.connection.sendMessage({
-			type: "chat",
-			message: msg,
-		})
+	policyClicked(index) {
+		this.send.discard(index)
+		this.ui.stopDiscarding()
 	}
 }
 

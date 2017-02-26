@@ -17,8 +17,7 @@ const $ = require("jquery")
 const EventSystem = require("./lib/events")
 const TemplateSystem = require("./lib/templates")
 const Connection = require("./connection")
-const GameHandler = require("./game")
-const InputHandler = require("./input")
+const GameHandler = require("./game/game")
 
 global.VERSION = "0.1"
 global.$ = $
@@ -30,7 +29,6 @@ class SecretHitler {
 		this.events = new EventSystem(this.container)
 		this.connection = new Connection(this)
 		this.game = new GameHandler(this)
-		this.input = new InputHandler(this)
 		this.template.apply("join")
 	}
 

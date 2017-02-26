@@ -17,9 +17,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }}
 
 <div class="lobby">
-	<h1 class="lobby-gamename">Lobby of {{game}}</h1>
+	<h1 class="gamename">Lobby of {{game}}</h1>
 
-	<div class="lobby-players" id="players"/>
+	<div class="players" id="players">
+		{{#eachMap players}}
+			{{log key value}}
+			{{> lobby-player name=key connected=value}}
+		{{/eachMap}}
+	</div>
 	<div class="chat">
 		<div id="chat" class="messages"></div>
 		<form class="input-wrapper" data-event="chat" data-listen="submit">
@@ -30,8 +35,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					placeholder="Enter chat message"/>
 		</form>
 	</div>
-	
+
 	<div class="start-wrapper">
-		<button class="start" id="start" onclick="tryStart()">Start Game</button>
+		<button class="btn {{#if enoughPlayers}}canstart{{/if}}" data-event="start">Start Game</button>
 	</div>
 </div>

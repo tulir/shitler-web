@@ -46,7 +46,7 @@ class Connection {
 	onMessage(event) {
 		const data = JSON.parse(event.data)
 		console.log("<--", data)
-		this.shitler.input.onMessage(data)
+		this.shitler.game.recv.onMessage(data)
 	}
 
 	sendMessage(payload) {

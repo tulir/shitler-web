@@ -40,13 +40,13 @@ class TemplateSystem {
 
 		this.handlebars.registerHelper("eachMap", (map, block) => {
 			let out = ""
-			for (let [key, value] of map.entries()) {
-				if (typeof value !== "object" || Array.isArray(value)) {
-					value = { ".": value }
-					key += ""
-				}
-				value["@key"] = key
-				out += block.fn(value)
+			if (typeof map !== "object") {
+				return out
+			} else if (!(map instanceof Map)) {
+				map = new Map(Object.entries(map))
+			}
+			for (const [key, value] of map.entries()) {
+				out += block.fn({ key, value })
 			}
 			return out
 		})

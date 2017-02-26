@@ -16,13 +16,14 @@
 const $ = require("jquery")
 
 class InputHandler {
-	constructor(shitler) {
-		this.shitler = shitler
+	constructor(game) {
+		this.game = game
+		this.shitler = game.shitler
 	}
 
 	onMessage(data) {
-		if (this.shitler.game.hasJoined()) {
-			if (this.constructor.hasOwnProperty(data.type)) {
+		if (this.game.hasJoined()) {
+			if (typeof this[data.type] === "function") {
 				this[data.type](data)
 			} else {
 				console.log(`Unidentified message (type ${data.type})`, data)
@@ -36,14 +37,7 @@ class InputHandler {
 		if (data.success) {
 			this.shitler.setAuthToken(data.game, data.authtoken)
 			console.log("Successfully joined game", data.game, "as", data.name)
-			this.shitler.game.currentNick = data.name
-			this.shitler.game.currentGame = data.game
-			this.shitler.game.playerCount = Object.keys(data.players).length
-
-			this.shitler.template.apply("lobby", {
-				game: data.game,
-				enoughPlayers: this.shitler.game.playerCount >= 5,
-			})
+			this.game.enterLobby(data)
 		} else {
 			console.log("Failed to join game", data.game, "as", data.name)
 			let error
@@ -76,55 +70,91 @@ class InputHandler {
 	}
 
 	join(data) {
-		console.log("Unhandled join:", data)
+		if (!this.game.started) {
+			this.shitler.template.append("lobby-player", {
+				name: data.name,
+				connected: true,
+			}, $("#players"))
+			this.game.ui.systemMessage(`${data.name} joined the game.`,
+					"Server")
+		} else {
+			console.log(`Uh oh! ${data.name} joined after the game started!`)
+		}
 	}
 
-	quit(data) {
-		console.log("Unhandled quit:", data)
+	part(data) {
+		if (!this.game.started) {
+			$("#players").find(`#player-${data.name}`).remove()
+			this.game.ui.systemMessage(`${data.name} left the game.`, "Server")
+		} else {
+			console.log(`Uh oh! ${data.name} left after the game started!`)
+		}
 	}
 
 	chat(data) {
-		console.log("Unhandled chat:", data)
+		this.game.ui.chatMessage(data.sender, data.message)
 	}
 
 	connected(data) {
-		console.log("Unhandled connected:", data)
+		$("#players").find(`#player-${data.name}`).removeClass("disconnected")
+		this.game.ui.systemMessage(`${data.name} reconnected.`, "Server")
 	}
 
 	disconnected(data) {
-		console.log("Unhandled disconnected:", data)
+		$("#players").find(`#player-${data.name}`).addClass("disconnected")
+		this.game.ui.systemMessage(`${data.name} disconnected.`, "Server")
 	}
 
 	start(data) {
-		console.log("Unhandled start:", data)
+		this.game.playerMap = new Map(Object.entries(data.players))
+		this.game.playerMap.set(this.game.currentNick, data.role)
+		this.shitler.template.apply("game", {
+			players: this.game.playerMap,
+		})
+		this.game.ui.systemMessage(`The game is starting. You're ${
+				data.role === "hitler" ? "" : "a "} ${data.role}`)
 	}
 
 	president(data) {
-		console.log("Unhandled president:", data)
+		this.game.ui.systemMessage(`${data.name} is picking a chancellor`)
+		if (data.name === this.game.currentNick) {
+			this.game.playerPickReason = "pickchancellor"
+			this.game.ui.startPicking(data.unpickable)
+		}
 	}
 
 	startvote(data) {
-		console.log("Unhandled startvote:", data)
+		this.game.ui.stopPicking()
+		this.game.ui.systemMessage(`Vote for president ${data.president
+				} and chancellor ${data.chancellor}`)
+		$("#votes").removeClass("hidden")
 	}
 
 	vote(data) {
-		console.log("Unhandled vote:", data)
+		this.game.ui.setVote(data.vote)
 	}
 
 	cards(data) {
-		console.log("Unhandled cards:", data)
+		this.game.ui.startDiscarding(data.cards)
 	}
 
 	presidentdiscard(data) {
-		console.log("Unhandled presidentdiscard:", data)
+		this.game.ui.stopVoting()
+		this.game.ui.systemMessage(`President ${data.name
+				} is discarding a policy...`)
 	}
 
 	chancellordiscard(data) {
-		console.log("Unhandled chancellordiscard:", data)
+		this.game.ui.systemMessage(`Chancellor ${data.name
+				} is discarding a policy...`)
 	}
 
 	table(data) {
-		console.log("Unhandled table:", data)
+		this.game.table.deck = data.deck
+		this.game.table.discarded = data.discarded
+		this.game.table.liberal = data.tableLiberal
+		this.game.table.fascist = data.tableFascist
+		this.game.ui.updateTable()
 	}
 
 	enact(data) {
