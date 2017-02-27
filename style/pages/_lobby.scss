@@ -1,0 +1,72 @@
+// shitler-web - A web client for shitlerd
+// Copyright (C) 2017 Tulir Asokan
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+.lobby {
+	.gamename {
+		margin: .5rem;
+		padding: 0;
+
+		text-align: center;
+
+		font-size: 1rem;
+	}
+
+	.chat {
+		position: fixed;
+		top: 3.5rem;
+		right: .1rem;
+		bottom: 2.5rem;
+		left: 12.2rem;
+	}
+
+	.start-wrapper {
+		position: fixed;
+		right: .25rem;
+		bottom: .25rem;
+		left: .25rem;
+	}
+
+	.players {
+		position: fixed;
+		top: 3.5rem;
+		right: calc(100% - 12rem);
+		bottom: 2.5rem;
+		left: 0;
+
+		text-align: center;
+
+		.player {
+			box-sizing: border-box;
+			width: calc(100% - .2rem);
+			margin-right: .1rem;
+			margin-bottom: .5rem;
+			margin-left: .1rem;
+			padding: .5rem;
+
+			text-align: center;
+
+			border: 1px solid $border-color;
+			border-radius: .25rem;
+
+			font-size: .8rem;
+			font-weight: bold;
+
+			&.disconnected {
+				background-color: $border-color;
+			}
+		}
+	}
+}

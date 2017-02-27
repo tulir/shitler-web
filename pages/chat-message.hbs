@@ -1,4 +1,4 @@
-<!--
+{{!
 shitler-web - A HTML5 client for shitlerd
 Copyright (C) 2017 Tulir Asokan
 
@@ -14,28 +14,13 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Secret Hitler Web</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<link rel="icon" type="image/png" href="favicon.png"/>
+}}
 
-	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
-	<link type="text/css" rel="stylesheet" href="index.css"/>
-</head>
-
-<body>
-	<div id="container">
-		<br/>
-		<h1 style="text-align: center;">
-			Please make sure you have JavaScript enabled
-		</h1>
+<div class="message-wrapper">
+	<div class="message">
+		<div class="sender-wrap">
+			<div class="sender {{#if system}}system{{/if}}">{{sender}}</div>
+		</div>
+		<div class="content {{#if action}}action{{/if}}">{{message}}</div>
 	</div>
-
-	<script type="text/javascript" src="templates.js"></script>
-	<script type="text/javascript" src="index.js"></script>
-</body>
-</html>
+</div>

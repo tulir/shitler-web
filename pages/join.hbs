@@ -1,4 +1,4 @@
-<!--
+{{!
 shitler-web - A HTML5 client for shitlerd
 Copyright (C) 2017 Tulir Asokan
 
@@ -14,28 +14,30 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Secret Hitler Web</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<link rel="icon" type="image/png" href="favicon.png"/>
+}}
 
-	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700"/>
-	<link type="text/css" rel="stylesheet" href="index.css"/>
-</head>
+<div class="join">
+	<h1 class="title">Secret Hitler Web</h1>
+	<div class="fail hidden" id="join-fail"/>
+	<form>
+		<input
+				class="textfield"
+				type="text"
+				autocomplete="on"
+				placeholder="Enter nick"
+				data-event="nick"
+				data-listen="keyup"
+				value="{{nick}}"/>
+		<input
+				class="textfield"
+				type="text"
+				autocomplete="off"
+				placeholder="Enter game ID"
+				data-event="gameid"
+				data-listen="keyup"
+				value="{{gameID}}"/>
 
-<body>
-	<div id="container">
-		<br/>
-		<h1 style="text-align: center;">
-			Please make sure you have JavaScript enabled
-		</h1>
-	</div>
-
-	<script type="text/javascript" src="templates.js"></script>
-	<script type="text/javascript" src="index.js"></script>
-</body>
-</html>
+		<button class="btn" type="button" data-event="create">Create</button>
+		<button class="btn" type="submit" data-event="join">Join</button>
+	</form>
+</div>

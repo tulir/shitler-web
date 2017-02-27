@@ -1,0 +1,74 @@
+// Ranssi 2.0
+// Copyright (C) 2016-2017 Tulir Asokan & Päivölän Opisto
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+@mixin minWidth($width) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin maxWidth($width) {
+	@media screen and (max-width: $width - 1) {
+		@content;
+	}
+}
+
+@mixin hidden-down($downFrom) {
+	@include maxWidth($downFrom) {
+		display: none !important;
+	}
+}
+
+@mixin hidden-up($upFrom) {
+	@include minWidth($upFrom) {
+		display: none !important;
+	}
+}
+
+.hidden-xs-down {
+	@include hidden-down($extrasmall);
+}
+
+.hidden-sm-down {
+	@include hidden-down($small);
+}
+
+.hidden-md-down {
+	@include hidden-down($medium);
+}
+
+.hidden-lg-down {
+	@include hidden-down($large);
+}
+
+.hidden-xl-down, .hidden-xs-up, .hidden {
+	display: none;
+}
+
+.hidden-sm-up {
+	@include hidden-up($extrasmall);
+}
+
+.hidden-md-up {
+	@include hidden-up($small);
+}
+
+.hidden-lg-up {
+	@include hidden-up($medium);
+}
+
+.hidden-xs-up {
+	@include hidden-up($large);
+}

@@ -1,0 +1,106 @@
+// shitler-web - A web client for shitlerd
+// Copyright (C) 2017 Tulir Asokan
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+.chat {
+	border-left: 2px solid $orange;
+
+	> .messages {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 2.5rem;
+		left: 0;
+
+		overflow-y: scroll;
+
+		.message-wrapper {
+			display: flex;
+
+			flex-wrap: nowrap;
+
+			.message {
+				display: flex;
+
+				box-sizing: border-box;
+				width: 100%;
+				margin: 0 .25rem;
+
+				@include maxWidth($small) {
+					flex-direction: column;
+				};
+
+				.sender-wrap {
+					display: flex;
+
+					@include minWidth($small) {
+						margin-right: .5rem;
+						padding-right: .5rem;
+
+						border-right: 1px solid #333;
+
+						.sender {
+							overflow-x: hidden;
+
+							width: 4rem;
+
+							text-align: right;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+
+							&.system {
+								color: red;
+
+								font-weight: normal;
+							}
+						}
+					}
+
+					align-items: center;
+
+					.sender {
+						font-weight: bold;
+					}
+				}
+
+				.content {
+					display: flex;
+
+					white-space: pre-wrap;
+					word-break: break-word;
+					hyphens: auto;
+
+					align-items: center;
+					overflow-wrap: break-word;
+
+					&.action {
+						font-style: italic;
+					}
+				}
+			}
+		}
+	}
+
+	> .input-wrapper {
+		position: absolute;
+		right: .25rem;
+		bottom: .25rem;
+		left: .25rem;
+
+		> .textfield {
+			margin-bottom: 0;
+		}
+	}
+}
