@@ -58,7 +58,7 @@ class GameHandler {
 		shitler.events.click("player", obj =>
 				this.playerClicked($(obj).attr("data-player")))
 		shitler.events.click("policy", obj =>
-				this.policyClicked($(obj).attr("data-index")))
+				this.policyClicked(+$(obj).attr("data-index")))
 	}
 
 	hasJoined() {
@@ -87,6 +87,35 @@ class GameHandler {
 		this.currentGame = data.game
 		this.playerCount = Object.keys(data.players).length
 		this.ui.openLobby(data.players)
+	}
+
+	rejoin(data) {
+		this.currentNick = data.name
+		this.currentGame = data.game
+		this.playerCount = Object.keys(data.players).length
+
+		this.playerMap = new Map(Object.entries(data.players))
+		this.playerMap.set(this.currentNick, data.role)
+		this.table.deck = data.table.deck
+		this.table.discarded = data.table.discarded
+		this.table.liberal = data.table.tableLiberal
+		this.table.fascist = data.table.tableFascist
+		this.shitler.template.apply("game", {
+			players: this.playerMap,
+			table: this.table,
+		})
+		this.ui.systemMessage(`You've rejoined the game. You're ${
+				data.role === "hitler" ? "" : "a "} ${data.role}`)
+	}
+
+	enterGame(data) {
+		this.playerMap = new Map(Object.entries(data.players))
+		this.playerMap.set(this.currentNick, data.role)
+		this.shitler.template.apply("game", {
+			players: this.playerMap,
+		})
+		this.ui.systemMessage(`The game is starting. You're ${
+				data.role === "hitler" ? "" : "a "} ${data.role}`)
 	}
 
 	playerClicked(pickedPlayer) {

@@ -37,7 +37,11 @@ class InputHandler {
 		if (data.success) {
 			this.shitler.setAuthToken(data.game, data.authtoken)
 			console.log("Successfully joined game", data.game, "as", data.name)
-			this.game.enterLobby(data)
+			if (data.started) {
+				this.game.rejoin(data)
+			} else {
+				this.game.enterLobby(data)
+			}
 		} else {
 			console.log("Failed to join game", data.game, "as", data.name)
 			let error
@@ -106,13 +110,7 @@ class InputHandler {
 	}
 
 	start(data) {
-		this.game.playerMap = new Map(Object.entries(data.players))
-		this.game.playerMap.set(this.game.currentNick, data.role)
-		this.shitler.template.apply("game", {
-			players: this.game.playerMap,
-		})
-		this.game.ui.systemMessage(`The game is starting. You're ${
-				data.role === "hitler" ? "" : "a "} ${data.role}`)
+		this.game.enterGame(data)
 	}
 
 	president(data) {
